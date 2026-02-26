@@ -27,15 +27,15 @@ const metadata = {
         loading="eager"
       />
       <!-- Dark overlay for text legibility -->
-      <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+      <div class="absolute inset-0 bg-black/60"></div>
       <!-- Centered text -->
       <div class="relative flex flex-col items-center justify-center h-full text-center px-4 pt-[76px]">
         <p class="text-sm font-bold uppercase tracking-widest text-blue-300 mb-3">Lawrence Piano Studio</p>
         <h1 class="text-4xl md:text-6xl font-bold font-heading text-white leading-tight mb-4">
           Our Lessons
         </h1>
-        <p class="text-lg md:text-xl text-white/85 max-w-2xl">
-          From young beginners to adults — find the perfect piano lesson format for your journey.
+        <p class="text-lg md:text-xl text-white max-w-2xl">
+          From young beginners to adults — find the perfect piano lesson for your journey.
         </p>
       </div>
     </div>
@@ -44,16 +44,13 @@ const metadata = {
   <!-- ======== INTRO ======== -->
   <section class="py-12 px-4 sm:px-6 max-w-4xl mx-auto text-center">
     <p class="text-lg text-muted dark:text-slate-300 leading-relaxed">
-      We offer three lesson formats designed to meet students where they are. Whether your child is just starting out,
+      We offer three lesson formats designed to meet students where they are. Whether you or your child are just starting out,
       ready to develop alongside peers, or you prefer personalized one-on-one instruction, we have a program for you.
     </p>
   </section>
 
   <!-- ======== ACCORDION: LESSON TYPES ======== -->
   <section class="px-4 sm:px-6 pb-16 max-w-4xl mx-auto" id="lesson-types">
-    <h2 class="text-3xl font-bold font-heading text-center text-[#1a2e5a] dark:text-white mb-8">
-      Lesson Formats
-    </h2>
 
     <div class="space-y-4" id="lessons-accordion">
 
@@ -333,9 +330,8 @@ const metadata = {
 
   <!-- ======== PRICING WIDGET ======== -->
   <Pricing
-    title="Tuition"
-    subtitle="Simple, transparent monthly pricing — no hidden fees. Visit our Policies page for full details on our pricing structure."
-    tagline="Cost Comparison"
+    tagline="<span class='font-heading'>Tuition Comparison</span>"
+    subtitle="Please visit our <a href='/info/policies' class='text-primary hover:underline font-medium'>policies page</a> for full details on our pricing structure, enrollment process, and studio policies."
     prices={[
       {
         title: 'Beginner Group',
@@ -381,21 +377,19 @@ const metadata = {
     ]}
   />
 
-  <!-- ======== POLICIES NOTE ======== -->
-  <section class="pb-16 px-4 sm:px-6 text-center">
-    <p class="text-sm text-muted dark:text-slate-400 max-w-2xl mx-auto">
-      * Please visit our{' '}
-      <a href="/info" class="text-primary hover:underline font-medium">Policies page</a>{' '}
-      for full details on our pricing structure, enrollment process, and studio policies.
-    </p>
-  </section>
-
   <!-- ======== ACCORDION SCRIPT ======== -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    function initAccordion() {
       const triggers = document.querySelectorAll<HTMLButtonElement>('.accordion-trigger');
 
       triggers.forEach((trigger) => {
+        // Remove any previously attached listeners by cloning
+        const clone = trigger.cloneNode(true) as HTMLButtonElement;
+        trigger.parentNode?.replaceChild(clone, trigger);
+      });
+
+      // Re-query after clone replacement
+      document.querySelectorAll<HTMLButtonElement>('.accordion-trigger').forEach((trigger) => {
         trigger.addEventListener('click', () => {
           const targetId = trigger.getAttribute('data-target');
           if (!targetId) return;
@@ -419,6 +413,11 @@ const metadata = {
           }
         });
       });
-    });
+    }
+
+    // Run on initial load
+    document.addEventListener('DOMContentLoaded', initAccordion);
+    // Re-run on Astro view transitions
+    document.addEventListener('astro:page-load', initAccordion);
   </script>
 </Layout>

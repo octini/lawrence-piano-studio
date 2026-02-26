@@ -25,7 +25,17 @@ export const footerData = {
       links: [
         { text: 'Home', href: getPermalink('/') },
         { text: 'Lessons', href: getPermalink('/lessons') },
-        { text: 'Teachers', href: getPermalink('/teachers') },
+    {
+      text: 'Teachers',
+      links: [
+        { text: 'Our Teachers', href: getPermalink('/teachers') },
+        { text: 'Eric Sakumura', href: getPermalink('/teachers/eric') },
+        { text: 'Laura King', href: getPermalink('/teachers/laura') },
+        { text: 'Jen Hosler', href: getPermalink('/teachers/jen') },
+        { text: 'Gina Lorenz', href: getPermalink('/teachers/gina') },
+        { text: 'John Eldridge', href: getPermalink('/teachers/john') },
+      ],
+    },
         { text: 'FAQ', href: getPermalink('/info/faq') },
         { text: 'Policies', href: getPermalink('/info/policies') },
         { text: 'Posts', href: getBlogPermalink() },
