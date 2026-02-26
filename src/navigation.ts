@@ -3,9 +3,16 @@ import { getPermalink, getBlogPermalink } from './utils/permalinks';
 export const headerData = {
   links: [
     { text: 'Home', href: getPermalink('/') },
-    { text: 'About', href: getPermalink('/about') },
-    { text: 'Lessons & Pricing', href: getPermalink('/lessons') },
-    { text: 'Blog', href: getBlogPermalink() },
+    { text: 'Lessons', href: getPermalink('/lessons') },
+    { text: 'Teachers', href: getPermalink('/teachers') },
+    {
+      text: 'Info',
+      links: [
+        { text: 'FAQ', href: getPermalink('/info/faq') },
+        { text: 'Policies', href: getPermalink('/info/policies') },
+      ],
+    },
+    { text: 'Posts', href: getBlogPermalink() },
     { text: 'Contact', href: getPermalink('/contact') },
   ],
   actions: [],
@@ -14,18 +21,40 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: 'Studio',
+      title: 'Navigate',
       links: [
         { text: 'Home', href: getPermalink('/') },
-        { text: 'About', href: getPermalink('/about') },
         { text: 'Lessons', href: getPermalink('/lessons') },
-        { text: 'Blog', href: getBlogPermalink() },
+        { text: 'Teachers', href: getPermalink('/teachers') },
+        { text: 'FAQ', href: getPermalink('/info/faq') },
+        { text: 'Policies', href: getPermalink('/info/policies') },
+        { text: 'Posts', href: getBlogPermalink() },
+        { text: 'Contact', href: getPermalink('/contact') },
       ],
     },
     {
-      title: 'Policies',
+      title: 'Contact Us',
       links: [
-        { text: 'Contact', href: getPermalink('/contact') },
+        {
+          text: '📍 4900 W 6th St, Lawrence, KS 66049',
+          href: 'https://maps.google.com/?q=4900+W+6th+St,+Lawrence,+KS+66049',
+          ariaLabel: 'View on Google Maps',
+        },
+        {
+          text: '📞 (785) 760-0679',
+          href: 'tel:+17857600679',
+          ariaLabel: 'Call Lawrence Piano Studio',
+        },
+        {
+          text: '✉ info@lawrencepianostudio.com',
+          href: 'mailto:info@lawrencepianostudio.com',
+          ariaLabel: 'Email Lawrence Piano Studio',
+        },
+      ],
+    },
+    {
+      title: 'Legal',
+      links: [
         { text: 'Terms', href: getPermalink('/terms') },
         { text: 'Privacy Policy', href: getPermalink('/privacy') },
       ],
@@ -36,9 +65,14 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/lawrencepianostudio/' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/lawrencepianostudio/' },
+    {
+      ariaLabel: 'Leave us a review on Google',
+      icon: 'tabler:star',
+      href: 'https://g.page/r/lawrencepianostudio/review',
+    },
   ],
-  footNote: `© 2026 Lawrence Piano Studio · All rights reserved.`,
+  googleReviewLink: 'https://g.page/r/lawrencepianostudio/review',
+  footNote: `© ${new Date().getFullYear()} Lawrence Piano Studio · All rights reserved.`,
 };

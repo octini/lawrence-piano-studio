@@ -1,63 +1,53 @@
 ---
 import '@fontsource-variable/inter';
+import '@fontsource-variable/playfair-display';
 
-// 'DM Sans'
-// Nunito
-// Dosis
-// Outfit
-// Roboto
-// Literata
-// 'IBM Plex Sans'
-// Karla
-// Poppins
-// 'Fira Sans'
-// 'Libre Franklin'
-// Inconsolata
-// Raleway
-// Oswald
-// 'Space Grotesk'
-// Urbanist
+// Lawrence Piano Studio — Theme
+// Light:  White bg | Navy text | Cobalt primary | Coral secondary | Gold accents
+// Dark:   Deep Navy bg | White text | Gold primary | Coral/Cobalt accents
 ---
 
 <style is:inline>
   :root {
     --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-serif: 'Playfair Display Variable';
+    --aw-font-heading: 'Playfair Display Variable';
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    /* Light mode */
+    --aw-color-primary: #1a56c4;       /* Cobalt */
+    --aw-color-secondary: #e8614d;     /* Coral */
+    --aw-color-accent: #c9a84c;        /* Gold */
 
-    --aw-color-text-heading: rgb(0 0 0);
-    --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
-    --aw-color-bg-page: rgb(255 255 255);
+    --aw-color-text-heading: #0f1f3d;  /* Navy */
+    --aw-color-text-default: #1b2a4a;  /* Navy (slightly lighter) */
+    --aw-color-text-muted: rgb(27 42 74 / 60%);
+    --aw-color-bg-page: #ffffff;       /* White */
 
-    --aw-color-bg-page-dark: rgb(3 6 32);
+    --aw-color-bg-page-dark: #0b1222;  /* Deep Navy */
 
     ::selection {
-      background-color: lavender;
+      background-color: #c9a84c33;     /* Gold tint */
     }
   }
 
   .dark {
     --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-serif: 'Playfair Display Variable';
+    --aw-font-heading: 'Playfair Display Variable';
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    /* Dark mode */
+    --aw-color-primary: #c9a84c;       /* Gold */
+    --aw-color-secondary: #e8614d;     /* Coral */
+    --aw-color-accent: #1a56c4;        /* Cobalt */
 
-    --aw-color-text-heading: rgb(247, 248, 248);
-    --aw-color-text-default: rgb(229 236 246);
-    --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: rgb(3 6 32);
+    --aw-color-text-heading: #f0f4fa;  /* Near-white */
+    --aw-color-text-default: #dce6f5;  /* Soft white */
+    --aw-color-text-muted: rgb(220 230 245 / 60%);
+    --aw-color-bg-page: #0b1222;       /* Deep Navy */
 
     ::selection {
-      background-color: black;
-      color: snow;
+      background-color: #c9a84c44;     /* Gold tint */
+      color: #f0f4fa;
     }
   }
 </style>
