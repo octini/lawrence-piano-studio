@@ -1,11 +1,95 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
 
 const metadata = {
   title: 'FAQ | Lawrence Piano Studio',
 };
+
+const faqItems = [
+  {
+    title: 'When is the best time to start lessons?',
+    description: `Piano students will begin their lessons at many different ages. The youngest we start students is in Kindergarten. We believe that language acquisition and note reading go hand in hand. Most methods that start students at a younger age teach piano by rote and add note reading at a later time.`,
+  },
+  {
+    title: 'Can I start with a keyboard or do I need an acoustic piano from the start?',
+    description: `We start many students using keyboards when they begin learning to play piano. We recommend a keyboard with at least 61 keys. This size keyboard will work well for the first 2–3 years of lessons.<br/><br/>
+    We do recommend that students interested in playing advanced classical piano have a piano at home to practice on. Even the most expensive electric keyboard cannot imitate the feel, touch and sound of an acoustic piano. Electric keyboards can only play loud or soft.<br/><br/>
+    With an acoustic piano you can manipulate the quality of sound by how you strike the key. Bach is played very percussive and articulated with the tips of the fingers, while Debussy is usually played on the pads of the fingers with a flatter hand giving a warm and embracing quality of sound.`,
+  },
+  {
+    title: 'What is the difference between group and private lessons?',
+    description: `Group lessons are hour-long classes; most private lessons are a half hour long.<br/><br/>
+    Private lessons generally work on repertoire, technique and theory, one on one with a teacher.<br/><br/>
+    In group lessons we cover these skills and also include beginning Blues improvisation, ensemble playing, student-student duets and composition. The group classes have multiple teachers assisting. We keep our student-teacher ratio around two-to-one.<br/><br/>
+    <strong>0–20 minutes:</strong> Each student is heard by a teacher on an acoustic piano on their weekly solo. While waiting, students use an iPad connected to a keyboard for note-finding or ear training games.<br/>
+    <strong>20–45 minutes:</strong> The class meets in the main room. Each student is at a keyboard and music is projected on screen. During group time we do technique exercises, unison playing, blues improvisation (fall), composition (spring), ensemble playing and student-student duets.<br/>
+    <strong>45–60 minutes:</strong> Students play games that work on ear training, note finding and rhythm clapping. We also record the previous week's practice time.`,
+  },
+  {
+    title: 'How often are the recitals and are students required to play in them?',
+    description: `Students in group lessons have two studio recitals — one in December and one in March — held during regular class time and attended by family and friends. Group students also perform at the Lawrence Arts Center in May.<br/><br/>
+    Private students have two recitals: one in December and one in May, both at the Lawrence Arts Center in the main theater on their beautiful Steinway piano.<br/><br/>
+    We encourage students to participate in the recitals but they are not required. We want our students to learn how to play the piano for their own personal knowledge and enrichment. Performance is just an expression of that knowledge in a public forum.`,
+  },
+  {
+    title: 'What is My Music Staff and how do I sign up?',
+    description: `My Music Staff is the studio management website we use to enroll, schedule and invoice our students. Students can log in to send email messages, check the calendar, reschedule lessons and sign up for recital times. The site is also very mobile friendly.<br/><br/>
+    To sign up, go to the top of our home page and click the <strong>"Register"</strong> button to enter your information. After you register, My Music Staff will notify us and we will contact you to set up either group or private lessons.`,
+  },
+  {
+    title: 'What payment options are available?',
+    description: `We accept cash, checks, credit cards and ACH bank transfers. Credit card payment has an additional <strong>$2.50 courtesy fee</strong> to help offset the cost of credit card processing. ACH bank transfers have no additional charge.<br/><br/>
+    You can also set up auto-pay for credit cards and ACH bank transfers. Auto-pay is only initiated when we email the monthly invoice. If you don't take lessons during the summer months, there is no invoice or auto-pay for those months.`,
+  },
+  {
+    title: 'What should I do if we are sick or need to miss a lesson?',
+    description: `If you must miss a lesson, please let us know as soon as possible.<br/><br/>
+    <strong>Group lessons:</strong> We will try to find a different class at the same level to make up the lesson.<br/>
+    <strong>Private lessons:</strong> We reschedule up to 2 lessons a semester. Please contact your teacher for a make-up time.<br/><br/>
+    For additional information, see our <a href="/info/policies" class="text-primary hover:underline">Policies page</a>.`,
+  },
+  {
+    title: 'How much should a student practice each week?',
+    description: `When students start out, we ask that they practice <strong>10–15 minutes, at least 5 days a week</strong>. As students advance, we will ask them to increase that daily amount so they can address the complexity and challenges the music provides.<br/><br/>
+    Middle school and high school students are usually asked to practice about 30 minutes a day, 5 days a week.<br/><br/>
+    We always encourage students to practice more if they can. The most important thing is practicing on a regular basis.`,
+  },
+  {
+    title: 'What piano method does your studio use?',
+    description: `You could describe our method as <strong>Traditional Piano</strong>. We emphasize note reading and rhythm counting right from the very start. We use many traditional method book series as well as supplementary books to give our students exposure to a wide range of musical styles — including classical, pop, jazz, and rock and roll.`,
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <!-- FAQ page content coming soon -->
+  <!-- Hero -->
+  <HeroText
+    id="top"
+    title="Frequently Asked Questions"
+    subtitle="Browse our most common questions below. Click any question to expand the answer."
+    tagline="Studio Info"
+  />
+
+  <!-- FAQ Accordion -->
+  <FAQs
+    items={faqItems}
+    columns={1}
+    isAccordion={true}
+    classes={{ container: 'max-w-4xl' }}
+  />
+
+  <!-- Return to top -->
+  <div class="max-w-4xl mx-auto px-4 md:px-6 pb-16 text-center">
+    <a
+      href="#top"
+      class="inline-flex items-center gap-2 text-sm font-semibold text-primary dark:text-blue-400 hover:underline"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+      Return to Top
+    </a>
+  </div>
 </Layout>

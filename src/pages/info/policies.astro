@@ -1,11 +1,167 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Image from '~/components/common/Image.astro';
+
+import studentInLesson from '~/assets/images/studio_photos/student_in_lesson.jpg';
+import practiceRoom from '~/assets/images/studio_photos/practice_room.JPG';
 
 const metadata = {
   title: 'Studio Policies | Lawrence Piano Studio',
 };
+
+const pricingItems = [
+  {
+    title: 'Group Lessons — Eric Sakumura &amp; Assistants',
+    description: `<ul class="list-disc list-inside space-y-1 mt-1">
+      <li>1 hour group lesson — <strong>$84.00/month</strong></li>
+      <li>½ hour group lesson — <strong>$45.00/month</strong></li>
+    </ul>`,
+  },
+  {
+    title: 'Private Lessons — Eric Sakumura',
+    description: `<ul class="list-disc list-inside space-y-1 mt-1">
+      <li>½ hour lesson weekly — <strong>$120.00/month</strong></li>
+    </ul>`,
+  },
+  {
+    title: 'Private Lessons — Jen Hosler, Laura King, John Eldridge, Gina Lorenz',
+    description: `<ul class="list-disc list-inside space-y-1 mt-1">
+      <li>½ hour lesson weekly — <strong>$116.00/month</strong></li>
+    </ul>`,
+  },
+  {
+    title: 'Family Discount',
+    description: `There is a <strong>$20/month discount</strong> for each additional family member ($10/month for ½-hour classes).<br/><br/>
+    You will be emailed monthly statements containing lesson fees and any credits or balance due from previous months. We also email a monthly newsletter with lesson and recital information.`,
+  },
+  {
+    title: 'Music Library / Registration Fee',
+    description: `<strong>$30.00 per student / $55.00 per family</strong> — charged once per year.<br/><br/>
+    For the past several years we have used a music library at the piano studio to provide our students with method books, duet books and sight reading books. We have found this useful because we are able to use a number of different methods, each stressing different types of reading skills. It also greatly reduces the number of books a student needs to purchase.<br/><br/>
+    <em>Note: The library fee does not include solo material that the student may order through their teacher.</em>`,
+  },
+  {
+    title: 'What is included in the monthly lesson charge?',
+    description: `All of the following are included in the monthly lesson charge and annual library fee:
+    <ul class="list-disc list-inside space-y-1 mt-2">
+      <li>Notebooks, staff paper, and worksheets for theory and improvisation</li>
+      <li>Two practice recitals for the Winter and Spring recitals</li>
+      <li>Winter and Spring recitals</li>
+      <li>Music (see information above about the annual music library fee)</li>
+    </ul>`,
+  },
+];
+
+const missedLessonItems = [
+  {
+    title: 'What happens if my child misses a group lesson?',
+    description: `<ul class="list-disc list-inside space-y-1 mt-1">
+      <li>We will try to find an opening in another class at the same level but at a different time during the week.</li>
+      <li>We will mail out the lesson assignment sheet and music for the week the student missed.</li>
+    </ul>`,
+  },
+  {
+    title: 'What happens if my child misses a private lesson?',
+    description: `<ul class="list-disc list-inside space-y-1 mt-1">
+      <li>We will try to schedule a make-up lesson later in the week or a different week.</li>
+      <li>Only <strong>two lessons</strong> can be made up per semester.</li>
+    </ul>`,
+  },
+  {
+    title: 'When can lessons be cancelled without a fee adjustment?',
+    description: `We reserve the right to cancel <strong>one lesson per year</strong> with no fee adjustment if weather conditions will not permit safe travel.<br/><br/>
+    We will adjust monthly lesson fees for the following reasons:
+    <ul class="list-disc list-inside space-y-1 mt-2">
+      <li>The student has an extended illness or injury lasting more than two weeks.</li>
+      <li>If the teacher cancels or misses a lesson.</li>
+    </ul>`,
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <!-- Studio policies page content coming soon -->
+  <!-- Hero -->
+  <HeroText
+    id="top"
+    title="Studio Policies"
+    subtitle="Lesson pricing, fees, missed lesson guidelines, and everything in between. Click any section to expand the details."
+    tagline="Studio Info"
+  />
+
+  <!-- Pricing & Fees section heading -->
+  <div class="max-w-4xl mx-auto px-4 md:px-6 pt-4 pb-2">
+    <h2 id="LessonPricing" class="text-2xl md:text-3xl font-bold text-heading dark:text-white scroll-mt-24">
+      Lesson Pricing &amp; Fees — 2025–2026
+    </h2>
+    <p class="mt-2 text-muted dark:text-slate-400">
+      The fees listed below are in effect for the 2025–2026 school year.
+    </p>
+  </div>
+
+  <!-- Pricing accordion -->
+  <FAQs
+    items={pricingItems}
+    columns={1}
+    isAccordion={true}
+    classes={{ container: 'max-w-4xl pt-0 md:pt-0 lg:pt-4' }}
+  />
+
+  <!-- Interspersed image: student in lesson -->
+  <div class="max-w-5xl mx-auto px-4 md:px-6 py-8">
+    <Image
+      src={studentInLesson}
+      alt="Student in a piano lesson at Lawrence Piano Studio"
+      class="w-full h-56 md:h-72 object-cover rounded-2xl shadow-lg"
+      width={1000}
+      height={450}
+      widths={[500, 800, 1000]}
+      sizes="(max-width: 768px) 100vw, 1000px"
+    />
+  </div>
+
+  <!-- Missed Lessons section heading -->
+  <div class="max-w-4xl mx-auto px-4 md:px-6 pt-4 pb-2">
+    <h2 id="MissedLessons" class="text-2xl md:text-3xl font-bold text-heading dark:text-white scroll-mt-24">
+      Missed Lessons
+    </h2>
+    <p class="mt-2 text-muted dark:text-slate-400">
+      If you must miss a lesson, please give us as much advance notice as possible.
+    </p>
+  </div>
+
+  <!-- Missed lessons accordion -->
+  <FAQs
+    items={missedLessonItems}
+    columns={1}
+    isAccordion={true}
+    classes={{ container: 'max-w-4xl pt-0 md:pt-0 lg:pt-4' }}
+  />
+
+  <!-- Interspersed image: practice room -->
+  <div class="max-w-5xl mx-auto px-4 md:px-6 py-8">
+    <Image
+      src={practiceRoom}
+      alt="Practice room at Lawrence Piano Studio"
+      class="w-full h-56 md:h-72 object-cover rounded-2xl shadow-lg"
+      width={1000}
+      height={450}
+      widths={[500, 800, 1000]}
+      sizes="(max-width: 768px) 100vw, 1000px"
+    />
+  </div>
+
+  <!-- Return to top -->
+  <div class="max-w-4xl mx-auto px-4 md:px-6 pb-16 text-center">
+    <a
+      href="#top"
+      class="inline-flex items-center gap-2 text-sm font-semibold text-primary dark:text-blue-400 hover:underline"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+      Return to Top
+    </a>
+  </div>
 </Layout>

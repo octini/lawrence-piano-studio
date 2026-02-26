@@ -10,6 +10,7 @@ const {
   tagline = '',
   items = [],
   columns = 2,
+  isAccordion = false,
 
   id,
   isDark = false,
@@ -20,14 +21,34 @@ const {
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
-  <ItemGrid
-    items={items}
-    columns={columns}
-    defaultIcon="tabler:chevron-right"
-    classes={{
-      container: `${columns === 1 ? 'max-w-4xl' : ''} gap-y-8 md:gap-y-12`,
-      panel: 'max-w-none',
-      icon: 'flex-shrink-0 mt-1 w-6 h-6 text-primary',
-    }}
-  />
+  {isAccordion ? (
+    <div class={`mx-auto ${columns === 1 ? 'max-w-4xl' : 'max-w-6xl'} divide-y divide-gray-200 dark:divide-gray-700`}>
+      {items.map(({ title: itemTitle, description }) => (
+        <details class="group py-4">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-lg text-heading dark:text-gray-200 hover:text-primary dark:hover:text-blue-400 transition-colors">
+            <span set:html={itemTitle} />
+            <span class="shrink-0 ml-auto text-primary dark:text-blue-400 transition-transform group-open:rotate-180">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </summary>
+          {description && (
+            <div class="mt-3 text-muted dark:text-slate-400 leading-relaxed" set:html={description} />
+          )}
+        </details>
+      ))}
+    </div>
+  ) : (
+    <ItemGrid
+      items={items}
+      columns={columns}
+      defaultIcon="tabler:chevron-right"
+      classes={{
+        container: `${columns === 1 ? 'max-w-4xl' : ''} gap-y-8 md:gap-y-12`,
+        panel: 'max-w-none',
+        icon: 'flex-shrink-0 mt-1 w-6 h-6 text-primary',
+      }}
+    />
+  )}
 </WidgetWrapper>
