@@ -1,5 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { Image } from 'astro:assets';
+import ginaImg from '~/assets/images/studio_photos/gina_lorenz.jpg';
 
 const metadata = {
   title: 'Gina Lorenz | Lawrence Piano Studio',
@@ -7,5 +9,32 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Gina Lorenz teacher page content coming soon -->
+  <section class="py-16 px-4 max-w-4xl mx-auto">
+    <div class="flex flex-col md:flex-row gap-10 items-start">
+      <!-- Headshot -->
+      <div class="w-full md:w-80 flex-shrink-0">
+        <Image
+          src={ginaImg}
+          alt="Gina Lorenz"
+          width={400}
+          height={400}
+          format="webp"
+          class="w-full rounded-2xl shadow-xl object-cover aspect-square"
+        />
+      </div>
+
+      <!-- Bio -->
+      <div class="flex-1">
+        <h1 class="text-4xl font-bold mb-2 dark:text-white">Gina Lorenz</h1>
+        <p class="text-base text-gray-600 dark:text-gray-400 mb-6">More information coming soon!</p>
+
+        <div class="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-xl px-5 py-3 text-blue-800 dark:text-blue-200 font-medium text-base mt-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z" />
+          </svg>
+          Available for group and private lessons.
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>

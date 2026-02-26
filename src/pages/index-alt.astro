@@ -1,5 +1,10 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+
+import ginaGroupLesson from '~/assets/images/studio_photos/gina_group_lesson.png';
+import sheetMusicAlternate from '~/assets/images/studio_photos/sheet_music_alternate.JPG';
 
 const metadata = {
   title: 'Lawrence Piano Studio — Alternate',
@@ -8,5 +13,58 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Alternate home page content coming soon -->
+  <!-- Hero: center-aligned, full width with Unsplash placeholder -->
+  <Hero
+    title="Welcome to the Lawrence Piano Studio"
+    subtitle="For over 36 years, the Lawrence Piano Studio has offered fun-filled, quality piano lessons in the Lawrence area to students of all ages. Join us and see what piano lessons can do for you!"
+    image={{
+      src: 'https://images.unsplash.com/photo-1552422535-c45813c61732?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Piano keys close-up',
+    }}
+  />
+
+  <!-- Block 1: Our Amazing Teachers -->
+  <Content
+    title="Our Amazing Teachers"
+    content={`
+      <p>Our experienced, passionate instructors bring decades of teaching expertise and genuine love of music to every lesson. Whether you're a first-time student or a returning adult learner, our teachers meet you exactly where you are and help you grow.</p>
+    `}
+    image={{
+      src: ginaGroupLesson,
+      alt: 'Gina teaching a group piano lesson',
+    }}
+  />
+
+  <!-- Block 2: Information, Please -->
+  <Content
+    title="Information, Please"
+    content={`
+      <p>Curious about lesson formats, scheduling, tuition, or what to expect in your first session? We've got answers. Explore our studio policies, FAQs, and everything you need to get started on your musical journey.</p>
+    `}
+    image={{
+      src: sheetMusicAlternate,
+      alt: 'Sheet music on a piano',
+    }}
+    isReversed={true}
+    isAfterContent={true}
+  />
+
+  <!-- Block 3: Why Music? -->
+  <Content
+    title="Why Music?"
+    content={`
+      <p>Research shows that learning music strengthens memory, sharpens focus, builds discipline, and even boosts academic performance. Beyond the science, music is simply joyful — a lifelong skill that enriches every stage of life. Watch the video to learn more.</p>
+    `}
+    image={`<div class="relative w-full" style="padding-bottom: 56.25%;">
+      <iframe
+        class="absolute inset-0 w-full h-full rounded-lg shadow-lg"
+        src="https://www.youtube.com/embed/R0JKCYZ8hng"
+        title="Why Music?"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>`}
+    isAfterContent={true}
+  />
 </Layout>

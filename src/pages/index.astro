@@ -1,5 +1,11 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+
+import enrollingSign from '~/assets/images/studio_photos/enrolling_sign_alternate.png';
+import ginaGroupLesson from '~/assets/images/studio_photos/gina_group_lesson.png';
+import sheetMusicAlternate from '~/assets/images/studio_photos/sheet_music_alternate.JPG';
 
 const metadata = {
   title: 'Lawrence Piano Studio',
@@ -8,5 +14,47 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Home page content coming soon -->
+  <!-- Hero: left-aligned text, right image -->
+  <Hero2
+    title="Welcome to the Lawrence Piano Studio"
+    subtitle="For over 36 years, the Lawrence Piano Studio has offered fun-filled, quality piano lessons in the Lawrence area to students of all ages. Join us and see what piano lessons can do for you!"
+    image={{ src: enrollingSign, alt: 'Now Enrolling sign at Lawrence Piano Studio' }}
+  />
+
+  <!-- Our Amazing Teachers -->
+  <Content
+    title="Our Amazing Teachers"
+    content="Our dedicated team of experienced instructors brings passion and expertise to every lesson, nurturing students of all skill levels in a warm, encouraging environment."
+    isReversed={true}
+    image={{ src: ginaGroupLesson, alt: 'Gina leading a group piano lesson' }}
+    callToAction={{ text: 'Meet the Teachers', href: '/teachers' }}
+  />
+
+  <!-- Information, Please -->
+  <Content
+    title="Information, Please"
+    content="Curious about our lesson formats, scheduling, tuition, or enrollment process? We have all the details you need to get started on your musical journey."
+    isReversed={false}
+    image={{ src: sheetMusicAlternate, alt: 'Sheet music on a piano' }}
+    callToAction={{ text: 'Learn More', href: '/info' }}
+    isAfterContent={true}
+  />
+
+  <!-- Why Music? -->
+  <Content
+    title="Why Music?"
+    content="When you listen to music, multiple areas of your brain become engaged and active. But when you actually play an instrument, that activity becomes more like a full-body brain workout. What's going on?"
+    isReversed={true}
+    isAfterContent={true}
+    image={`<div class="relative w-full" style="padding-bottom: 56.25%;">
+      <iframe
+        class="absolute inset-0 w-full h-full rounded-lg shadow-lg"
+        src="https://www.youtube.com/embed/R0JKCYZ8hng"
+        title="Why Music? - How playing an instrument benefits your brain"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>`}
+  />
 </Layout>
