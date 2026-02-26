@@ -1,5 +1,5 @@
 site:
-  name: AstroWind
+  name: Lawrence Piano Studio
   site: 'https://astrowind.vercel.app'
   base: '/'
   trailingSlash: false
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Lawrence Piano Studio
+    template: '%s — Lawrence Piano Studio'
+  description: "Nurturing a lifelong love of music through thoughtful, personalized piano instruction for students of all ages and skill levels."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Lawrence Piano Studio
     images:
       - url: '~/assets/images/default.png'
         width: 1200
