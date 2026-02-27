@@ -52,17 +52,17 @@ export const footerData = {
       links: [
         {
           text: '2512 W 6th St. Suite B, Lawrence, KS 66049',
-          href: 'https://maps.google.com/?q=2512+W+6th+St+Suite+B,+Lawrence,+KS+66049',
+          href: 'https://www.google.com/maps/dir//Lawrence%20Piano%20Studio,%202512%20W%206th%20St.%20Suite%20B,%20Lawrence,%20KS%2066049',
           ariaLabel: 'View on Google Maps',
         },
         {
-          text: '📞 (785) 842-2182',
+          text: '(785) 842-2182',
           href: 'tel:+17858422182',
           ariaLabel: 'Call Lawrence Piano Studio',
         },
         {
-          text: '✉ info@lawrencepianostudio.com',
-          href: 'mailto:info@lawrencepianostudio.com',
+          text: 'contact@lawrencepiano.com',
+          href: 'mailto:contact@lawrencepiano.com',
           ariaLabel: 'Email Lawrence Piano Studio',
         },
       ],
@@ -75,9 +75,9 @@ export const footerData = {
     {
       ariaLabel: 'Leave us a review on Google',
       icon: 'tabler:star',
-      href: 'https://search.google.com/local/writereview?placeid=ChIJ8_z_LgDFuocRkHwB8Xl-b9Q',
+      href: 'https://search.google.com/local/writereview?placeid=ChIJLavmsyFvv4cRHonyQWOnTdc',
     },
   ],
-  googleReviewLink: 'https://search.google.com/local/writereview?placeid=ChIJ8_z_LgDFuocRkHwB8Xl-b9Q',
+  googleReviewLink: 'https://search.google.com/local/writereview?placeid=ChIJLavmsyFvv4cRHonyQWOnTdc',
   footNote: `© ${new Date().getFullYear()} Lawrence Piano Studio · All rights reserved.`,
 };
