@@ -1,5 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import { headerData } from '~/navigation';
 import Pricing from '~/components/widgets/Pricing.astro';
 import { Image } from 'astro:assets';
 
@@ -15,6 +17,10 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header {...headerData} isDark={true} isTransparent={true} showToggleTheme={true} position="center" />
+  </Fragment>
+
   <!-- ======== HERO BANNER ======== -->
   <section class="relative md:-mt-[76px] not-prose overflow-hidden">
     <div class="relative h-[420px] md:h-[520px] w-full">
@@ -30,7 +36,6 @@ const metadata = {
       <div class="absolute inset-0 bg-black/60 pt-20"></div>
       <!-- Centered text -->
       <div class="relative flex flex-col items-center justify-center h-full text-center px-4 pt-[76px]">
-        <p class="text-sm font-bold uppercase tracking-widest text-blue-300 mb-3">Lawrence Piano Studio</p>
         <h1 class="text-4xl md:text-6xl font-bold font-heading text-white leading-tight mb-4">
           Our Lessons
         </h1>
@@ -58,7 +63,7 @@ const metadata = {
       <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
         <button
           class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left group"
-          aria-expanded="true"
+          aria-expanded="false"
           data-target="panel-young"
         >
           <div class="flex items-center gap-4">
@@ -84,7 +89,7 @@ const metadata = {
           </svg>
         </button>
 
-        <div id="panel-young" class="accordion-panel px-6 pb-8">
+        <div id="panel-young" class="accordion-panel px-6 pb-8 hidden">
           <div class="grid md:grid-cols-2 gap-8 items-start">
             <div>
               <p class="text-muted dark:text-slate-300 leading-relaxed mb-6">
@@ -330,7 +335,7 @@ const metadata = {
 
   <!-- ======== PRICING WIDGET ======== -->
   <Pricing
-    tagline="<span class='font-heading'>Tuition Comparison</span>"
+    title="<span class='font-heading text-primary'>Tuition Comparison</span>"
     subtitle="Please visit our <a href='/info/policies' class='text-primary hover:underline font-medium'>policies page</a> for full details on our pricing structure, enrollment process, and studio policies."
     prices={[
       {

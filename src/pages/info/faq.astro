@@ -2,12 +2,16 @@
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
+import Image from '~/components/common/Image.astro';
+
+import handsOnKeys from '~/assets/images/studio_photos/hands_on_keys.jpg';
+import steinway from '~/assets/images/studio_photos/steinway.jpg';
 
 const metadata = {
   title: 'FAQ | Lawrence Piano Studio',
 };
 
-const faqItems = [
+const faqItems1 = [
   {
     title: 'When is the best time to start lessons?',
     description: `Piano students will begin their lessons at many different ages. The youngest we start students is in Kindergarten. We believe that language acquisition and note reading go hand in hand. Most methods that start students at a younger age teach piano by rote and add note reading at a later time.`,
@@ -33,6 +37,9 @@ const faqItems = [
     Private students have two recitals: one in December and one in May, both at the Lawrence Arts Center in the main theater on their beautiful Steinway piano.<br/><br/>
     We encourage students to participate in the recitals but they are not required. We want our students to learn how to play the piano for their own personal knowledge and enrichment. Performance is just an expression of that knowledge in a public forum.`,
   },
+];
+
+const faqItems2 = [
   {
     title: 'What is My Music Staff and how do I sign up?',
     description: `My Music Staff is the studio management website we use to enroll, schedule and invoice our students. Students can log in to send email messages, check the calendar, reschedule lessons and sign up for recital times. The site is also very mobile friendly.<br/><br/>
@@ -50,6 +57,9 @@ const faqItems = [
     <strong>Private lessons:</strong> We reschedule up to 2 lessons a semester. Please contact your teacher for a make-up time.<br/><br/>
     For additional information, see our <a href="/info/policies" class="text-primary hover:underline">Policies page</a>.`,
   },
+];
+
+const faqItems3 = [
   {
     title: 'How much should a student practice each week?',
     description: `When students start out, we ask that they practice <strong>10–15 minutes, at least 5 days a week</strong>. As students advance, we will ask them to increase that daily amount so they can address the complexity and challenges the music provides.<br/><br/>
@@ -59,7 +69,7 @@ const faqItems = [
   {
     title: 'What piano method does your studio use?',
     description: `You could describe our method as <strong>Traditional Piano</strong>. We emphasize note reading and rhythm counting right from the very start. We use many traditional method book series as well as supplementary books to give our students exposure to a wide range of musical styles — including classical, pop, jazz, and rock and roll.`,
-  },
+  }
 ];
 ---
 
@@ -69,19 +79,60 @@ const faqItems = [
     id="top"
     title="Frequently Asked Questions"
     subtitle="Browse our most common questions below. Click any question to expand the answer."
-    tagline=""
   />
 
-  <!-- FAQ Accordion -->
+  <!-- FAQ Accordion Part 1 -->
   <FAQs
-    items={faqItems}
+    items={faqItems1}
     columns={1}
     isAccordion={true}
-    classes={{ container: 'max-w-4xl' }}
+    classes={{ container: 'max-w-4xl py-4 md:py-4 lg:py-6' }}
+  />
+
+  <!-- Interspersed image: Hands on Keys -->
+  <div class="max-w-5xl mx-auto px-4 md:px-6 py-4">
+    <div class="flex justify-center mx-auto my-6 w-full"><Image class="rounded-lg shadow-lg"
+      src={handsOnKeys}
+      alt="Hands playing the piano"
+      class="w-full h-56 md:h-72 object-cover rounded-2xl shadow-lg"
+      width={1000}
+      height={450}
+      widths={[500, 800, 1000]}
+      sizes="(max-width: 768px) 100vw, 1000px"
+    /></div>
+  </div>
+
+  <!-- FAQ Accordion Part 2 -->
+  <FAQs
+    items={faqItems2}
+    columns={1}
+    isAccordion={true}
+    classes={{ container: 'max-w-4xl py-4 md:py-4 lg:py-6' }}
+  />
+
+  <!-- Interspersed image: Steinway -->
+  <div class="max-w-5xl mx-auto px-4 md:px-6 py-4">
+    <div class="flex justify-center mx-auto my-6 w-full"><Image class="rounded-lg shadow-lg"
+      src={steinway}
+      alt="Steinway piano at Lawrence Piano Studio"
+      class="w-full h-56 md:h-72 object-cover rounded-2xl shadow-lg"
+      width={1000}
+      height={450}
+      widths={[500, 800, 1000]}
+      sizes="(max-width: 768px) 100vw, 1000px"
+    /></div>
+  </div>
+
+  <!-- FAQ Accordion Part 3 -->
+  <FAQs
+    items={faqItems3}
+    columns={1}
+    isAccordion={true}
+    classes={{ container: 'max-w-4xl py-4 md:py-4 lg:py-6' }}
   />
 
   <!-- Return to top -->
-  <div class="max-w-4xl mx-auto px-4 md:px-6 pb-16 text-center">
+  <div class="max-w-4xl mx-auto px-4 md:px-6 pb-16 text-center mt-8">
     <a
       href="#top"
       class="inline-flex items-center gap-2 text-sm font-semibold text-primary dark:text-blue-400 hover:underline"

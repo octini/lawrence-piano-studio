@@ -8,7 +8,6 @@ export const headerData = {
       text: 'Teachers',
       href: getPermalink('/teachers'),
       links: [
-        { text: 'Our Teachers', href: getPermalink('/teachers') },
         { text: 'Eric Sakumura', href: getPermalink('/teachers/eric') },
         { text: 'Laura King', href: getPermalink('/teachers/laura') },
         { text: 'Jen Hosler', href: getPermalink('/teachers/jen') },
