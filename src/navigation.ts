@@ -37,8 +37,12 @@ export const footerData = {
         { text: 'Home', href: getPermalink('/') },
         { text: 'Lessons', href: getPermalink('/lessons') },
         { text: 'Teachers', href: getPermalink('/teachers') },
-        { text: 'FAQ', href: getPermalink('/info/faq') },
-        { text: 'Policies', href: getPermalink('/info/policies') },
+      ],
+    },
+    {
+      title: 'More',
+      links: [
+        { text: 'Info', href: getPermalink('/info') },
         { text: 'Posts', href: getBlogPermalink() },
         { text: 'Contact', href: getPermalink('/contact') },
       ],
@@ -47,13 +51,13 @@ export const footerData = {
       title: 'Contact Us',
       links: [
         {
-          text: '📍 4900 W 6th St, Lawrence, KS 66049',
-          href: 'https://maps.google.com/?q=4900+W+6th+St,+Lawrence,+KS+66049',
+          text: '2512 W 6th St. Suite B, Lawrence, KS 66049',
+          href: 'https://maps.google.com/?q=2512+W+6th+St+Suite+B,+Lawrence,+KS+66049',
           ariaLabel: 'View on Google Maps',
         },
         {
-          text: '📞 (785) 760-0679',
-          href: 'tel:+17857600679',
+          text: '📞 (785) 842-2182',
+          href: 'tel:+17858422182',
           ariaLabel: 'Call Lawrence Piano Studio',
         },
         {
@@ -63,27 +67,17 @@ export const footerData = {
         },
       ],
     },
-    {
-      title: 'Legal',
-      links: [
-        { text: 'Terms', href: getPermalink('/terms') },
-        { text: 'Privacy Policy', href: getPermalink('/privacy') },
-      ],
-    },
   ],
-  secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
+  secondaryLinks: [],
   socialLinks: [
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/lawrencepianostudio/' },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/lawrencepianostudio/' },
     {
       ariaLabel: 'Leave us a review on Google',
       icon: 'tabler:star',
-      href: 'https://g.page/r/lawrencepianostudio/review',
+      href: 'https://search.google.com/local/writereview?placeid=ChIJ8_z_LgDFuocRkHwB8Xl-b9Q',
     },
   ],
-  googleReviewLink: 'https://g.page/r/lawrencepianostudio/review',
+  googleReviewLink: 'https://search.google.com/local/writereview?placeid=ChIJ8_z_LgDFuocRkHwB8Xl-b9Q',
   footNote: `© ${new Date().getFullYear()} Lawrence Piano Studio · All rights reserved.`,
 };
