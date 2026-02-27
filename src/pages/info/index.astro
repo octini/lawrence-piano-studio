@@ -2,6 +2,8 @@
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import Image from '~/components/common/Image.astro';
+import Header from '~/components/widgets/Header.astro';
+import { headerData } from '~/navigation';
 
 import pianoKeys from '~/assets/images/studio_photos/piano_keys.jpg';
 
@@ -11,26 +13,35 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero -->
-  <HeroText
-    title="Information"
-  />
+  <Fragment slot="header">
+    <Header {...headerData} isDark={true} isTransparent={true} position="center" />
+  </Fragment>
 
-  <!-- Piano keys banner image -->
-  <div class="max-w-7xl mx-auto px-4 md:px-6 pb-8">
-    <Image
-      src={pianoKeys}
-      alt="Piano keys close-up"
-      class="w-full h-48 md:h-64 object-cover rounded-2xl shadow-lg"
-      width={1200}
-      height={400}
-      widths={[600, 900, 1200]}
-      sizes="(max-width: 768px) 100vw, 1200px"
-    />
-  </div>
+  <!-- Hero with full-bleed background image -->
+  <section class="relative md:-mt-[76px] not-prose mb-12">
+    <div class="absolute inset-0 z-0">
+      <Image
+        src={pianoKeys}
+        alt="Piano keys close-up"
+        class="w-full h-full object-cover"
+        width={1920}
+        height={600}
+        widths={[600, 1024, 1920]}
+        sizes="(max-width: 768px) 100vw, 1920px"
+      />
+      <!-- Explicit dark overlay -->
+      <div class="absolute inset-0 bg-black/60 pt-20"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-32 lg:py-48 flex flex-col items-center justify-center text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6">
+        Information
+      </h1>
+    </div>
+  </section>
 
   <!-- Two large hub cards -->
-  <section class="relative not-prose">
+  <section class="relative not-prose mt-12">
     <div class="max-w-5xl mx-auto px-4 md:px-6 pb-16 md:pb-20">
       <div class="grid gap-6 sm:grid-cols-2">
 
