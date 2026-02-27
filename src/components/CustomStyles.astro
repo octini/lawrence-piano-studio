@@ -51,6 +51,7 @@ import '@fontsource-variable/playfair-display';
     }
   }
 
+ 
   /* Global aesthetic color pops */
   .prose a {
     text-decoration-color: var(--aw-color-secondary) !important;
@@ -61,5 +62,20 @@ import '@fontsource-variable/playfair-display';
   .prose a:hover {
     text-decoration-color: var(--aw-color-accent) !important;
   }
+  
+  /* Pagefind Search Colors */
+  :root {
+    --pagefind-ui-primary: var(--aw-color-secondary);
+    --pagefind-ui-text: var(--aw-color-text-default);
+    --pagefind-ui-background: var(--aw-color-bg-page);
+    --pagefind-ui-border: var(--aw-color-primary);
+  }
+  .dark {
+    --pagefind-ui-primary: var(--aw-color-primary);
+    --pagefind-ui-text: var(--aw-color-text-default);
+    --pagefind-ui-background: var(--aw-color-bg-page);
+    --pagefind-ui-border: var(--aw-color-primary);
+  }
 </style>
+
 
