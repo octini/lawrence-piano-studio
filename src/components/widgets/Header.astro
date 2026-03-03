@@ -2,9 +2,9 @@
 import { Icon } from 'astro-icon/components';
 import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
-import Search from 'astro-pagefind/components/Search';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import Button from '~/components/ui/Button.astro';
+import '@pagefind/default-ui/css/ui.css';
 
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash, getAsset } from '~/utils/permalinks';
@@ -27,6 +27,7 @@ export interface Props {
   actions?: Array<CallToAction>;
   isSticky?: boolean;
   isDark?: boolean;
+  isTransparent?: boolean;
   isFullWidth?: boolean;
   showToggleTheme?: boolean;
   showRssFeed?: boolean;
@@ -39,6 +40,7 @@ const {
   actions = [],
   isSticky = false,
   isDark = false,
+  isTransparent = false,
   isFullWidth = false,
   showToggleTheme = false,
   showRssFeed = false,
@@ -46,14 +48,15 @@ const {
 } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+const bundlePath = `${import.meta.env.BASE_URL}pagefind/`;
 ---
 
 <header
   class:list={[
-    { sticky: isSticky, relative: !isSticky, dark: isDark },
+    { sticky: isSticky || isTransparent, relative: !isSticky && !isTransparent, dark: isDark },
     'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
   ]}
-  {...isSticky ? { 'data-aw-sticky-header': true } : {}}
+  {...(isSticky || isTransparent) ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
 >
   <div class="absolute inset-0"></div>
@@ -112,13 +115,13 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                   </ul>
                 </>
               ) : (
-                <a
-                  class:list={[
-                    'hover:text-secondary dark:hover:text-accent px-4 py-3 flex items-center whitespace-nowrap transition-colors',
-                    { 'aw-link-active': href === currentPath },
-                  ]}
-                  href={href}
-                >
+<a
+  class:list={[
+    'hover:text-secondary dark:hover:text-primary px-4 py-3 flex items-center whitespace-nowrap transition-colors',
+    { 'aw-link-active': href === currentPath },
+  ]}
+  href={href}
+>
                   {text}
                 </a>
               )}
@@ -133,11 +136,19 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         'hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0 md:justify-self-end',
       ]}
     >
-      <div class="items-center flex justify-between w-full md:w-auto">
-        <div class="flex">
-          <Search id="search" className="pagefind-ui mr-2" />
-          {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
-        </div>
+<div class="items-center flex justify-between w-full md:w-auto">
+  <div class="flex items-center gap-2">
+<!-- Search Toggle Button -->
+<button
+  id="search-toggle"
+  type="button"
+  class="p-2 rounded-lg hover:bg-secondary/10 dark:hover:bg-primary/10 hover:text-secondary dark:hover:text-primary transition-colors duration-200"
+  aria-label="Open search"
+>
+  <Icon name="tabler:search" class="w-5 h-5" />
+</button>
+    {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
+  </div>
         {
           actions?.length ? (
             <span class="ml-4 rtl:ml-0 rtl:mr-4">
@@ -153,3 +164,78 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </div>
   </div>
 </header>
+
+<!-- Search Modal (appears when toggle is clicked) -->
+<div id="search-modal" class="fixed inset-0 z-50 hidden">
+  <!-- Backdrop -->
+  <div id="search-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+  
+  <!-- Search Container -->
+  <div class="relative z-10 flex items-start justify-center pt-20 px-4">
+    <div class="w-full max-w-2xl bg-white dark:bg-slate-900 rounded-xl shadow-2xl overflow-hidden">
+      <div 
+        id="pagefind-search" 
+        class="pagefind-init p-4" 
+        data-pagefind-ui 
+        data-bundle-path={bundlePath}
+      ></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { PagefindUI } from '@pagefind/default-ui';
+  
+  function initSearchModal() {
+    const toggleBtn = document.getElementById('search-toggle');
+    const modal = document.getElementById('search-modal');
+    const backdrop = document.getElementById('search-backdrop');
+    const searchContainer = document.getElementById('pagefind-search');
+    
+    if (!toggleBtn || !modal || !searchContainer) return;
+    
+    let searchInitialized = false;
+    
+    toggleBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      
+      // Initialize Pagefind UI on first open
+      if (!searchInitialized && searchContainer.classList.contains('pagefind-init')) {
+        const bundlePath = searchContainer.getAttribute('data-bundle-path') || '/pagefind/';
+        new PagefindUI({
+          element: '#pagefind-search',
+          bundlePath,
+          showSubResults: true,
+          showImages: false,
+        });
+        searchContainer.classList.remove('pagefind-init');
+        searchInitialized = true;
+      }
+      
+      // Focus the search input
+      setTimeout(() => {
+        const input = searchContainer.querySelector('input');
+        if (input) input.focus();
+      }, 100);
+    });
+    
+    // Close on backdrop click
+    backdrop?.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+  
+  // Run on initial load and Astro view transitions
+  document.addEventListener('DOMContentLoaded', initSearchModal);
+  document.addEventListener('astro:page-load', initSearchModal);
+</script>

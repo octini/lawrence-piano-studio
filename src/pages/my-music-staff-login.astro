@@ -1,0 +1,63 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'My Music Staff Login | Lawrence Piano Studio',
+};
+
+const widgetScriptUrl = 'https://app.mymusicstaff.com/Widget/v4/Widget.ashx?settings=eyJTY2hvb2xJRCI6InNjaF9kTVNKcyIsIldlYnNpdGVJRCI6Indic19weEpRIiwiV2Vic2l0ZUJsb2NrSUQiOiJ3YmJfcWNYZko0In0=';
+---
+
+<Layout metadata={metadata}>
+<section class="py-16 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+  <!-- Page Header -->
+  <div class="text-center mb-12">
+    <h1 class="text-4xl font-bold font-heading text-[#1a2e5a] dark:text-white">
+      My Music Staff Portal
+    </h1>
+  </div>
+
+  <!-- Login Widget Container -->
+  <div id="mms-login-widget" class="bg-white dark:bg-slate-900 rounded-2xl shadow-lg border border-[#1a2e5a]/20 p-8 lg:p-10">
+    <!-- My Music Staff Login Widget Script -->
+    <script is:inline src={widgetScriptUrl}></script>
+    
+    <!-- Sign Up Link -->
+    <div class="mt-8 pt-6 border-t border-gray-200 dark:border-slate-700 text-center">
+      <p class="text-muted">
+        Don't have a My Music Staff account yet?{' '}
+        <a href="/my-music-staff-register" class="text-primary dark:text-primary font-semibold hover:underline">
+          Sign up here
+        </a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Re-initialize widget on Astro page transitions -->
+<script define:vars={{ widgetScriptUrl }}>
+  function loadWidget() {
+    const container = document.getElementById('mms-login-widget');
+    if (!container) return;
+    
+    // Check if widget already loaded
+    const existingIframe = container.querySelector('iframe');
+    if (existingIframe) return;
+    
+    // Remove any existing script
+    const existingScript = container.querySelector('script[src*="mymusicstaff"]');
+    if (existingScript) existingScript.remove();
+    
+    // Create and append new script
+    const script = document.createElement('script');
+    script.src = widgetScriptUrl;
+    script.async = true;
+    container.insertBefore(script, container.firstChild);
+  }
+  
+  // Run on initial load
+  document.addEventListener('DOMContentLoaded', loadWidget);
+  // Run on Astro view transitions
+  document.addEventListener('astro:page-load', loadWidget);
+</script>
+</Layout>

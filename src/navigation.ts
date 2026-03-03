@@ -25,6 +25,7 @@ export const headerData = {
     },
     { text: 'Posts', href: getBlogPermalink() },
     { text: 'Contact', href: getPermalink('/contact') },
+    { text: 'My Music Staff', href: getPermalink('/my-music-staff-login') },
   ],
   actions: [],
 };
@@ -45,6 +46,7 @@ export const footerData = {
         { text: 'Info', href: getPermalink('/info') },
         { text: 'Posts', href: getBlogPermalink() },
         { text: 'Contact', href: getPermalink('/contact') },
+        { text: 'My Music Staff', href: getPermalink('/my-music-staff-login') },
       ],
     },
     {
@@ -71,7 +73,7 @@ export const footerData = {
   secondaryLinks: [],
   socialLinks: [
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/lawrencepianostudio/' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/lawrencepianostudio/' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/lawrencepiano/' },
     {
       ariaLabel: 'Leave us a review on Google',
       icon: 'tabler:star',

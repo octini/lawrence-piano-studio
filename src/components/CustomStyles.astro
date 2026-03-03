@@ -63,19 +63,41 @@ import '@fontsource-variable/playfair-display';
     text-decoration-color: var(--aw-color-accent) !important;
   }
   
-  /* Pagefind Search Colors */
-  :root {
-    --pagefind-ui-primary: var(--aw-color-secondary);
-    --pagefind-ui-text: var(--aw-color-text-default);
-    --pagefind-ui-background: var(--aw-color-bg-page);
-    --pagefind-ui-border: var(--aw-color-primary);
-  }
-  .dark {
-    --pagefind-ui-primary: var(--aw-color-primary);
-    --pagefind-ui-text: var(--aw-color-text-default);
-    --pagefind-ui-background: var(--aw-color-bg-page);
-    --pagefind-ui-border: var(--aw-color-primary);
-  }
+/* Pagefind Search Colors */
+:root {
+  --pagefind-ui-primary: var(--aw-color-secondary);
+  --pagefind-ui-text: var(--aw-color-text-default);
+  --pagefind-ui-background: var(--aw-color-bg-page);
+  --pagefind-ui-border: var(--aw-color-primary);
+  --pagefind-ui-focus-ring: var(--aw-color-secondary);
+}
+.dark {
+  --pagefind-ui-primary: var(--aw-color-primary);
+  --pagefind-ui-text: var(--aw-color-text-default);
+  --pagefind-ui-background: var(--aw-color-bg-page);
+  --pagefind-ui-border: var(--aw-color-primary);
+  --pagefind-ui-focus-ring: var(--aw-color-secondary);
+}
+
+/* Pagefind focus ring override */
+.pagefind-ui input:focus,
+.pagefind-ui__search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--aw-color-secondary) !important;
+}
+
+/* My Music Staff Widget - Dark Mode Styling */
+/* Uses CSS filter to approximate dark mode since iframe is from external domain */
+.dark #mms-login-widget iframe,
+.dark #mms-register-widget iframe {
+  /* 
+   * invert(0.85) makes white ~15% gray (lighter than black)
+   * hue-rotate(180deg) flips colors back so they still look correct
+   * brightness(0.95) slightly dims to blend with dark backgrounds
+   */
+  filter: invert(0.85) hue-rotate(180deg) brightness(0.95);
+  border-radius: 8px;
+}
 </style>
 
 

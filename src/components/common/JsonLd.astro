@@ -1,0 +1,86 @@
+---
+/**
+ * JSON-LD Structured Data Component
+ * Helps search engines understand the business type and details
+ */
+
+export interface Props {
+  type?: 'MusicSchool' | 'LocalBusiness' | 'EducationalOrganization';
+}
+
+const { type = 'MusicSchool' } = Astro.props;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': type,
+  name: 'Lawrence Piano Studio',
+  description: 'Nurturing a lifelong love of music through thoughtful, personalized piano instruction for students of all ages and skill levels.',
+  url: 'https://lawrencepiano.com',
+  telephone: '(785) 842-2182',
+  email: 'contact@lawrencepiano.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '2512 W 6th St. Suite B',
+    addressLocality: 'Lawrence',
+    addressRegion: 'KS',
+    postalCode: '66049',
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 38.9717,
+    longitude: -95.2350,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '15:00',
+      closes: '20:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '09:00',
+      closes: '14:00',
+    },
+  ],
+  priceRange: '$$',
+  sameAs: [
+    'https://www.facebook.com/lawrencepiano/',
+    'https://www.instagram.com/lawrencepianostudio/',
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Piano Lessons',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Young Beginner Group Lessons',
+          description: 'Piano lessons for ages 4-6, 45 minutes per week',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Advancing Group Lessons',
+          description: 'Piano lessons for grades 1-6, 60 minutes per week',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Private Piano Lessons',
+          description: 'One-on-one piano instruction for all ages, 30 minutes per week',
+        },
+      },
+    ],
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
