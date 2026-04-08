@@ -1,0 +1,66 @@
+npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> @onwidget/astrowind@1.0.0-beta.52 dev
+> astro dev
+
+10:36:49 [astrowind] Astrowind `./src/config.yaml` has been loaded.
+10:36:49 [types] Generated 0ms
+10:36:49 [content] Syncing content
+10:36:49 [content] Synced content
+
+ astro  v5.18.0 ready in 951 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+10:36:49 watching for file changes...
+10:39:03 [200] / 249ms
+10:39:04 [200] /_image 219ms
+10:39:04 [200] /_image 301ms
+10:39:04 [200] /_image 413ms
+10:39:07 [200] /_image 84ms
+10:39:19 [200] /teachers 7ms
+10:39:19 [200] /_image 36ms
+10:39:19 [200] /_image 48ms
+10:39:19 [200] /_image 43ms
+10:39:19 [200] /_image 59ms
+10:39:19 [200] /_image 82ms
+10:39:23 [200] /teachers/gina 5ms
+10:39:25 [200] /teachers 6ms
+10:39:26 [200] /teachers/john 5ms
+10:39:28 [200] /teachers 15ms
+10:39:29 [200] /teachers/gina 14ms
+10:39:30 [200] /teachers 9ms
+10:39:31 [200] /teachers/jen 5ms
+10:39:31 [200] /_image 15ms
+10:39:42 [200] /teachers 9ms
+10:39:45 [200] /teachers/laura 5ms
+10:39:49 [200] /teachers 5ms
+10:39:50 [200] /teachers/jen 8ms
+10:39:51 [200] /teachers 12ms
+10:39:52 [200] /teachers/eric 8ms
+10:39:59 [200] /teachers 13ms
+10:41:13 [watch] src/pages/teachers/index.astro
+10:41:13 [watch] src/pages/teachers/index.astro
+10:41:14 [200] /teachers 66ms
+10:42:18 [200] / 7ms
+10:42:19 [200] /lessons 6ms
+10:42:19 [200] /_image 72ms
+10:42:19 [200] /_image 76ms
+10:42:19 [200] /_image 83ms
+10:42:19 [200] /_image 103ms
+10:42:19 [200] /_image 126ms
+10:42:25 [200] /teachers 7ms
+10:42:26 [200] /teachers/eric 6ms
+10:42:27 [200] /info 4ms
+10:42:29 [200] /_image 1252ms
+10:42:35 [200] /info/faq 6ms
+10:42:36 [200] /_image 422ms
+10:42:36 [200] /_image 1012ms
+10:42:41 [200] /blog 7ms
+10:42:42 [200] /_image 234ms
+10:42:42 [200] /_image 408ms
+10:42:42 [200] /_image 480ms
+10:42:42 [200] /_image 971ms
+10:42:46 [200] /contact 4ms
+10:42:46 [200] /_image 117ms
