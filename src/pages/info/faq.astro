@@ -8,7 +8,8 @@ import handsOnKeys from '~/assets/images/studio_photos/hands_on_keys.jpg';
 import steinway from '~/assets/images/studio_photos/steinway.jpg';
 
 const metadata = {
-  title: 'FAQ | Lawrence Piano Studio',
+  title: 'Frequently Asked Questions',
+  description: "Find answers to common questions about piano lessons at Lawrence Piano Studio — when to start, lesson types, recitals, practice tips, payment options, and more.",
 };
 
 const faqItems1 = [
@@ -70,6 +71,21 @@ const faqItems3 = [
     description: `You could describe our method as <strong>Traditional Piano</strong>. We emphasize note reading and rhythm counting right from the very start. We use many traditional method book series as well as supplementary books to give our students exposure to a wide range of musical styles — including classical, pop, jazz, and rock and roll.`,
   }
 ];
+
+const allFaqItems = [...faqItems1, ...faqItems2, ...faqItems3];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: allFaqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.title,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.description.replace(/<br\/?>/g, ' ').replace(/<strong>/g, '').replace(/<\/strong>/g, '').replace(/<a[^>]*>(.*?)<\/a>/g, '$1'),
+    },
+  })),
+};
 ---
 
 <Layout metadata={metadata}>
@@ -129,6 +145,9 @@ const faqItems3 = [
     isAccordion={true}
     classes={{ container: 'max-w-4xl py-4 md:py-4 lg:py-6' }}
   />
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 
   <!-- Return to top -->
   <div class="max-w-4xl mx-auto px-4 md:px-6 pb-16 text-center mt-8">
