@@ -13,6 +13,7 @@
 - Place it near the existing identity fields, preferably after Email Address and before Subject.
 - Use existing field styling, label conventions, required asterisk treatment, and spacing.
 - Use `id="phone"`, `name="phone"`, and label text `Phone Number`; do not create a second form or new submission path.
+- Use helpful placeholder text, preferably `(785) 555-1234`; only choose a different example if it is an equivalent local-format phone number that better matches the existing form placeholder style.
 
 ## Files/components affected
 
@@ -46,6 +47,7 @@
 - Confirm only `src/pages/contact.astro` changes during later implementation.
 - Run the project’s relevant validation command after implementation, such as a build or Astro check if available.
 - Manually verify the contact page renders the new required phone field in light and dark modes.
+- Manually verify mobile/touch UX for `type="tel"` and `autocomplete="tel"`, including phone keypad behavior and phone-number autofill where the test device/browser supports them.
 - Manually verify an empty phone field blocks submission and a filled phone field is included in the Web3Forms payload.
 
 ## Out of scope
